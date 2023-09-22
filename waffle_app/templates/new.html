@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Waffle</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/dashboard">&#129479 WH</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Browse</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/images">Images</a>
+          </li>
+        </ul>
+      </div>
+      <a class="btn btn-danger btn-md" href="/logout">Log Out</a>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    
+    <div class="row">
+      <div class="col">
+        <h3>Post your waffle!</h3>
+      </div>
+      <div class="col text-center">
+        <h5><em>"Where theres a waffle, theres a way."</em></h5>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <h1 class="display-6 text-center">New Waffle</h1>
+        <form action="/waffle/create" method="POST">
+          
+          <div class="mb-3">
+            <label class="form-label">Post Title</label>
+            <input name="title" type="text" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Image URL</label>
+            <input name="img_url" type="text" class="form-control">
+          </div>
+
+          <div class="form-floating">
+            <textarea class="form-control" name="comment" style="height: 100px"></textarea>
+            <label>Brief comment/description</label>
+          </div>
+
+
+          <div class="row text-center">
+            <div class="col">
+              <button class="btn btn-warning">Post</button>
+            </div>
+          </div>
+        </form>
+        {% for m in get_flashed_messages(category_filter='create_err') %}
+          <h2 class="m-3 text-center text-danger">{{m}}</h2>
+        {% endfor %}
+    </div>
+  </div>
+
+
+
+
+</body>
+
+</html>
